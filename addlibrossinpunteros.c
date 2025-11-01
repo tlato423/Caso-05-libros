@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <time.h>
 #define NOM_LIBRO 60
 #define MAX_LIBROS 40
 void ejecutarPrograma();
