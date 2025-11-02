@@ -15,3 +15,7 @@ def menu():
     input("escoje un caso")
 
 
+x = 8
+b = 7
+
+if(x = 9)
