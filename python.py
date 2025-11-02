@@ -18,4 +18,5 @@ def menu():
 x = 8
 b = 7
 
-if(x = 9)
+if(x==8):
+    print("es ochojijijiji")
