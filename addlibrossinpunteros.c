@@ -4,31 +4,78 @@
 #include <time.h>
 #define NOM_LIBRO 60
 #define MAX_LIBROS 40
-void ejecutarPrograma();
 
-void agregarLibro(char nombreLibro[NOM_LIBRO], char libros[MAX_LIBROS]){
+struct categorias{
+    char terror[NOM_LIBRO][MAX_LIBROS];
+    char cFiccion[NOM_LIBRO][MAX_LIBROS];
+    char cocina[NOM_LIBRO][MAX_LIBROS];
+    char romance[NOM_LIBRO][MAX_LIBROS];
+    char historia[NOM_LIBRO][MAX_LIBROS];
+    char miscelaneo[NOM_LIBRO][MAX_LIBROS];
+};
+
+//void ejecutarPrograma();
+
+void agregarLibro(int *numLibros, struct categorias biblioteca[],char libro[NOM_LIBRO]){
     int i;
-    char libro[NOM_LIBRO];
-    printf("Digite el nombre de un libro: ");
-    fgets(libro,NOM_LIBRO,stdin);
-    while(getchar() != '\n');
 
-    printf("En que categoria lo quieres guardar? ");
-
-    for(i=0;i<MAX_LIBROS;i++){
-        if(i<MAX_LIBROS){
-            nombreLibro[i] = libro; 
-        }
+    if(*numLibros>=MAX_LIBROS){
+        printf("Ya no se pueden agregar más libros");
+        return;
     }
 
-    printf("nombre: %s",nombreLibro[i]);
+
+    printf("Digite el nombre del libro: ");
+    fgets(libro,NOM_LIBRO,stdin);
+    libro[strcspn(libro, "\n")] = '\0';
+
+
+    printf("En que categoria lo quieres guardar? ");
+    menuCategoria(*numLibros,biblioteca,libro);
+
+    printf("Tu libro %s se guardo exitosamente",libro);
+
 }
 
-void categorias(){
-    char ingles, terror, cienciaFiccion, romance, psicologia;
+
+void menuCategoria(int *numLibros, struct categorias biblioteca[NOM_LIBRO][MAX_LIBROS],char libro[NOM_LIBRO]){
+    int opc;
+
+    printf("1- Terror\n");
+    printf("2- Ciencia ficcion\n");
+    printf("3- cocina\n");
+    printf("4- Romance\n");
+    printf("5- Historia\n");
+    printf("6- Otros\n");
+    printf("Opcion: ");
+    scanf("%i",&opc);
+    while(getchar() != 'n');
+
+    if(opc>=1 && opc <= 6){
+        switch (opc)
+        {
+        case 1: 
+            biblioteca[NOM_LIBRO][*numLibros].terror = libro;
+        break;
+        case 2: libro = biblioteca[NOM_LIBRO][*numLibros].cFiccion = libro;
+        break;
+        case 3:biblioteca[NOM_LIBRO][*numLibros].cocina = libro;
+        break;
+        case 4:biblioteca[NOM_LIBRO][*numLibros].romance = libro;
+        break;
+        case 5:biblioteca[NOM_LIBRO][*numLibros].historia = libro;
+        break;
+        case 6:biblioteca[NOM_LIBRO][*numLibros].miscelaneo = libro;
+        break;
+        default:
+            printf("opcion no valida");
+        break;
+        }
+        (*numLibros)++;
+    }
 }
 
-void menu(char nombreLibro[NOM_LIBRO], char libros[MAX_LIBROS]){
+/*void menu(char nombreLibro[NOM_LIBRO], char libros[MAX_LIBROS]){
     int opc;
 
     do{
@@ -55,9 +102,11 @@ void ejecutarPrograma(){
     char nombreLibro[20];
 
     menu(nombreLibro,libros);
-}
+}*/
 
 int main(){
-    ejecutarPrograma();
+    int a,b, c;
+   // ejecutarPrograma();
+    agregarLibro(a,b,c);
     return 0;
 }
