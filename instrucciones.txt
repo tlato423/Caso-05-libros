@@ -1,9 +1,0 @@
-De la clase para los títulos de libros, realice lo siguiente:
-1. Incluya hasta veinte títulos (considere manejar hasta cuarenta).
-2. Incluya hasta seis categorías.
-3. Realice un menú contextual para:
-3.1 Agregar un nuevo libro
-3.2 Buscar un libro.
-3.3 Modificar un libro.
-3.4 Imprimir todos los libros.
-3.5 Imprimir por categoría.
